@@ -1,0 +1,5 @@
+(declare-const x Int)
+(declare-const y Int)
+(assert (= 5 (+ x y 3)))
+(check-sat)
+

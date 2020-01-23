@@ -1,0 +1,5 @@
+(declare-const x Int)
+(assert (= 5 (+ x 3)))
+(assert (= 10 (+ x 6)))
+(check-sat)
+
