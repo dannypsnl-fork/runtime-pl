@@ -13,8 +13,8 @@ class Operator {};
 
 struct Instruction {
   ID id;
-  const Operator &op;
-  Instruction(ID id, const Operator &op);
+  Operator op;
+  Instruction(ID id, Operator op);
   static Instruction var(ID self_id);
   static Instruction const_(ID self_id, uint64_t value);
   static Instruction equal_zero(ID self_id, ID op1);

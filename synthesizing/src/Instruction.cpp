@@ -4,7 +4,7 @@
 
 #include "Instruction.h"
 
-Instruction::Instruction(ID id, const Operator &op) : id{id}, op{op} {}
+Instruction::Instruction(ID id, Operator op) : id{id}, op{op} {}
 
 Instruction Instruction::var(ID self_id) { return Instruction(self_id, Var()); }
 Instruction Instruction::const_(ID self_id, uint64_t value) {
