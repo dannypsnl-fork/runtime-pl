@@ -6,14 +6,13 @@
 #define SYNTHESIZING_SRC_PROGRAMBUILDER_H_
 
 #include <memory>
-
 #include "Program.h"
 
 class ProgramBuilder {
-private:
+ private:
   std::unique_ptr<Program> _program;
 
-public:
+ public:
   explicit ProgramBuilder() { _program = std::make_unique<Program>(Program()); }
   std::unique_ptr<Program> build();
   ID var();
@@ -31,8 +30,8 @@ public:
   ID div(ID op1, ID op2);
   ID select(ID op1, ID op2, ID op3);
 
-private:
+ private:
   ID _next_id();
 };
 
-#endif // SYNTHESIZING_SRC_PROGRAMBUILDER_H_
+#endif  // SYNTHESIZING_SRC_PROGRAMBUILDER_H_

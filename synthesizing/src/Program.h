@@ -6,7 +6,6 @@
 #define SYNTHESIZING_SRC_PROGRAM_H_
 
 #include <vector>
-
 #include "Instruction.h"
 
 struct Program {
@@ -15,4 +14,4 @@ struct Program {
   explicit Program() : instructions{} {}
 };
 
-#endif // SYNTHESIZING_SRC_PROGRAM_H_
+#endif  // SYNTHESIZING_SRC_PROGRAM_H_

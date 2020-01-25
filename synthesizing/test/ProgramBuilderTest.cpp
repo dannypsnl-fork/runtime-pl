@@ -2,9 +2,8 @@
 // Created by dannypsnl on 2020/1/25.
 //
 
-#include "gtest/gtest.h"
-
 #include "ProgramBuilder.h"
+#include "gtest/gtest.h"
 
 TEST(ProgramBuilder, ID_increasing) {
   ProgramBuilder builder{};
