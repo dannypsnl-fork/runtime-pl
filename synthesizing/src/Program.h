@@ -9,9 +9,10 @@
 
 #include "Instruction.h"
 
-class Program {
-private:
-  std::vector<Instruction> _instructions;
+struct Program {
+  std::vector<Instruction> instructions;
+
+  explicit Program() : instructions{} {}
 };
 
 #endif // SYNTHESIZING_SRC_PROGRAM_H_
