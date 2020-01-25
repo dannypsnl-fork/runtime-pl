@@ -9,8 +9,12 @@
 
 typedef uint32_t ID;
 
+class Operator {};
+
 struct Instruction {
   ID id;
+  const Operator &op;
+  Instruction(ID id, const Operator &op);
   static Instruction var(ID self_id);
   static Instruction const_(ID self_id, uint64_t value);
   static Instruction equal_zero(ID self_id, ID op1);
@@ -27,45 +31,59 @@ struct Instruction {
   static Instruction select(ID self_id, ID op1, ID op2, ID op3);
 };
 
-struct Var : public Instruction {};
-struct Const : public Instruction {
+struct Var : public Operator {};
+struct Const : public Operator {
   uint64_t value;
+  explicit Const(uint64_t value) : value{value} {}
 };
-struct EqualZero : public Instruction {
+struct EqualZero : public Operator {
   ID operand;
+  explicit EqualZero(ID ope) : operand{ope} {}
 };
-struct Equal : public Instruction {
+struct Equal : public Operator {
   ID operand1, operand2;
+  Equal(ID op1, ID op2) : operand1{op1}, operand2{op2} {}
 };
-struct NotEqual : public Instruction {
+struct NotEqual : public Operator {
   ID operand1, operand2;
+  NotEqual(ID op1, ID op2) : operand1{op1}, operand2{op2} {}
 };
-struct LessThan : public Instruction {
+struct LessThan : public Operator {
   ID operand1, operand2;
+  LessThan(ID op1, ID op2) : operand1{op1}, operand2{op2} {}
 };
-struct LessEqual : public Instruction {
+struct LessEqual : public Operator {
   ID operand1, operand2;
+  LessEqual(ID op1, ID op2) : operand1{op1}, operand2{op2} {}
 };
-struct GreaterThen : public Instruction {
+struct GreaterThen : public Operator {
   ID operand1, operand2;
+  GreaterThen(ID op1, ID op2) : operand1{op1}, operand2{op2} {}
 };
-struct GreaterEqual : public Instruction {
+struct GreaterEqual : public Operator {
   ID operand1, operand2;
+  GreaterEqual(ID op1, ID op2) : operand1{op1}, operand2{op2} {}
 };
-struct Add : public Instruction {
+struct Add : public Operator {
   ID operand1, operand2;
+  Add(ID op1, ID op2) : operand1{op1}, operand2{op2} {}
 };
-struct Sub : public Instruction {
+struct Sub : public Operator {
   ID operand1, operand2;
+  Sub(ID op1, ID op2) : operand1{op1}, operand2{op2} {}
 };
-struct Mul : public Instruction {
+struct Mul : public Operator {
   ID operand1, operand2;
+  Mul(ID op1, ID op2) : operand1{op1}, operand2{op2} {}
 };
-struct Div : public Instruction {
+struct Div : public Operator {
   ID operand1, operand2;
+  Div(ID op1, ID op2) : operand1{op1}, operand2{op2} {}
 };
-struct Select : public Instruction {
+struct Select : public Operator {
   ID operand1, operand2, operand3;
+  Select(ID op1, ID op2, ID op3)
+      : operand1{op1}, operand2{op2}, operand3{op3} {}
 };
 
 #endif // SYNTHESIZING_SRC_INSTRUCTION_H_
