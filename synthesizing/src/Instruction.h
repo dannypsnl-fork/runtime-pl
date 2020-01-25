@@ -40,50 +40,25 @@ struct EqualZero : public Operator {
   ID operand;
   explicit EqualZero(ID ope) : operand{ope} {}
 };
-struct Equal : public Operator {
-  ID operand1, operand2;
-  Equal(ID op1, ID op2) : operand1{op1}, operand2{op2} {}
-};
-struct NotEqual : public Operator {
-  ID operand1, operand2;
-  NotEqual(ID op1, ID op2) : operand1{op1}, operand2{op2} {}
-};
-struct LessThan : public Operator {
-  ID operand1, operand2;
-  LessThan(ID op1, ID op2) : operand1{op1}, operand2{op2} {}
-};
-struct LessEqual : public Operator {
-  ID operand1, operand2;
-  LessEqual(ID op1, ID op2) : operand1{op1}, operand2{op2} {}
-};
-struct GreaterThen : public Operator {
-  ID operand1, operand2;
-  GreaterThen(ID op1, ID op2) : operand1{op1}, operand2{op2} {}
-};
-struct GreaterEqual : public Operator {
-  ID operand1, operand2;
-  GreaterEqual(ID op1, ID op2) : operand1{op1}, operand2{op2} {}
-};
-struct Add : public Operator {
-  ID operand1, operand2;
-  Add(ID op1, ID op2) : operand1{op1}, operand2{op2} {}
-};
-struct Sub : public Operator {
-  ID operand1, operand2;
-  Sub(ID op1, ID op2) : operand1{op1}, operand2{op2} {}
-};
-struct Mul : public Operator {
-  ID operand1, operand2;
-  Mul(ID op1, ID op2) : operand1{op1}, operand2{op2} {}
-};
-struct Div : public Operator {
-  ID operand1, operand2;
-  Div(ID op1, ID op2) : operand1{op1}, operand2{op2} {}
-};
+#define BinaryOperatorStruct(NAME)                         \
+  struct NAME : public Operator {                          \
+    ID operand1, operand2;                                 \
+    NAME(ID op1, ID op2) : operand1{op1}, operand2{op2} {} \
+  }
+BinaryOperatorStruct(Equal);
+BinaryOperatorStruct(NotEqual);
+BinaryOperatorStruct(LessThan);
+BinaryOperatorStruct(LessEqual);
+BinaryOperatorStruct(GreaterThen);
+BinaryOperatorStruct(GreaterEqual);
+BinaryOperatorStruct(Add);
+BinaryOperatorStruct(Sub);
+BinaryOperatorStruct(Mul);
+BinaryOperatorStruct(Div);
 struct Select : public Operator {
   ID operand1, operand2, operand3;
   Select(ID op1, ID op2, ID op3)
       : operand1{op1}, operand2{op2}, operand3{op3} {}
 };
 
-#endif // SYNTHESIZING_SRC_INSTRUCTION_H_
+#endif  // SYNTHESIZING_SRC_INSTRUCTION_H_
