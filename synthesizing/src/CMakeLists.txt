@@ -20,7 +20,7 @@ else()
     message(STATUS "Could not find Z3 include path")
 endif()
 
-add_library(synthesize-lib Program.h Program.cpp Instruction.cpp Instruction.h ProgramBuilder.cpp ProgramBuilder.h Component.h Specification.h Library.h)
+add_library(synthesize-lib Program.h Program.cpp Instruction.cpp Instruction.h ProgramBuilder.cpp ProgramBuilder.h Component.h Specification.h Library.h Synthesizer.h)
 # Link Z3
-target_include_directories(synthesize-lib PRIVATE ${Z3_INCLUDE_DIRS})
+target_include_directories(synthesize-lib PUBLIC ${Z3_INCLUDE_DIRS})
 target_link_libraries(synthesize-lib PRIVATE ${Z3_LIBRARIES})

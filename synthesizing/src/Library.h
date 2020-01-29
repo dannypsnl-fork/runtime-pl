@@ -10,6 +10,9 @@
 
 class Library {
   std::vector<Component> components;
+
+ public:
+  Library() : components{} {}
 };
 
 #endif  // SYNTHESIZING_SRC_LIBRARY_H_

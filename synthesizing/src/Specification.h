@@ -15,6 +15,8 @@ struct Specification {
   virtual Z3_bool make_expression(Z3_context context,
                                   std::vector<Z3_ast> inputs, Z3_ast output,
                                   uint32_t bit_width) = 0;
+
+  virtual ~Specification() {}
 };
 
 #endif  // SYNTHESIZING_SRC_SPECIFICATION_H_

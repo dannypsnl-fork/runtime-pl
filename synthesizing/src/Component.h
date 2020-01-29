@@ -28,6 +28,8 @@ struct Component {
   /// immediates and operands.
   virtual std::shared_ptr<Operator> make_operator(
       std::vector<uint64_t> immediates, std::vector<ID> operands) = 0;
+
+  virtual ~Component() {}
 };
 
 #endif  // SYNTHESIZING_SRC_COMPONENT_H_
