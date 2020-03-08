@@ -1,7 +1,6 @@
 package researchllvm
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/llir/llvm/ir"
@@ -14,12 +13,12 @@ func TestPuts(t *testing.T) {
 
 	helloWorldString := mod.NewGlobalDef("tmp", constant.NewCharArrayFromString("Hello, World!\n"))
 
-	f := mod.NewFunc(
+	puts := mod.NewFunc(
 		"puts",
 		types.I32,
 		ir.NewParam("format", types.NewPointer(types.I8)),
 	)
-	f.Sig.Variadic = true
+	puts.Sig.Variadic = true
 
 	main := mod.NewFunc(
 		"main",
@@ -31,10 +30,10 @@ func TestPuts(t *testing.T) {
 		constant.NewInt(types.I32, 0),
 		constant.NewInt(types.I32, 0),
 	)
-	mainB.NewCall(f, pointerToString)
+	mainB.NewCall(puts, pointerToString)
 	mainB.NewRet(constant.NewInt(types.I32, 0))
 
-	fmt.Printf("generated LLVM IR:\n\n%s\n", mod)
+	PrettyPrint(mod)
 
 	executeIR(mod)
 }
