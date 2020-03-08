@@ -40,6 +40,7 @@ func TestPuts(t *testing.T) {
 
 // generated LLVM IR:
 //
+// ```
 // @tmp = global [14 x i8] c"Hello, World!\0A"
 //
 // declare i32 @puts(i8* %format, ...)
@@ -50,7 +51,7 @@ func TestPuts(t *testing.T) {
 // 	%2 = call i32 (i8*, ...) @puts(i8* %1)
 // 	ret i32 0
 // }
-//
+// ```
 // Output:
 //
 // Hello, World!

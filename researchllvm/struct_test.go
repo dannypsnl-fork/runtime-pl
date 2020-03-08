@@ -50,3 +50,27 @@ func TestStruct(t *testing.T) {
 
 	executeIR(mod)
 }
+
+// generated LLVM IR:
+//
+// ```
+// %string = type { i8* }
+//
+// @tmp = global [14 x i8] c"Hello, World!\0A"
+//
+// declare i32 @puts(i8* %format, ...)
+//
+// define i32 @main() {
+// ; <label>:0
+// 	%1 = getelementptr [14 x i8], [14 x i8]* @tmp, i32 0, i32 0
+// 	%2 = alloca %string
+// 	%3 = getelementptr %string, %string* %2, i32 0, i32 0
+// 	store i8* %1, i8** %3
+// 	%4 = load i8*, i8** %3
+// 	%5 = call i32 (i8*, ...) @puts(i8* %4)
+// 	ret i32 0
+// }
+// ```
+// Output:
+//
+// Hello, World!
